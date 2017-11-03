@@ -1,0 +1,52 @@
+int z=5;
+
+void setup() 
+{
+pinMode(13, OUTPUT);
+pinMode(10, OUTPUT);
+pinMode(11, OUTPUT);
+digitalWrite(10, HIGH); 
+digitalWrite(11, HIGH); 
+digitalWrite(13, LOW);
+Serial.begin(9600);
+Serial.flush();
+}
+
+void loop()
+{
+Serial.flush();
+while (Serial.available()) // alliws if i alliws tipota
+{
+Serial.flush();
+char dt = (char)Serial.read();
+switch(dt)
+{
+case 'e' :
+pinMode(10, OUTPUT);
+pinMode(11, OUTPUT);
+if (z==5)
+{
+digitalWrite(11, LOW);
+delay(700);
+digitalWrite(10, LOW);
+delay(800);
+digitalWrite(10, HIGH);
+z=6;
+}
+else
+{}
+break;
+
+case 'k' :
+pinMode(10, OUTPUT);
+pinMode(11, OUTPUT);
+digitalWrite(10, HIGH);
+digitalWrite(11, HIGH);
+z=5;
+break;
+
+default :
+break;
+}
+}
+}
